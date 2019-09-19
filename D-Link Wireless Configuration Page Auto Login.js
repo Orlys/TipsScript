@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         D-Link Wireless Configuration Page Auto Login
 // @version      0.1
+// @match        *://*/*
 // @Author       Orlys
 // @grant        none
 // ==/UserScript==
