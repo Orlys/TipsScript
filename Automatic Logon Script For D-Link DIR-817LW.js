@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         D-Link Wireless Configuration Page Auto Login
+// @name         Automatic Logon Script For D-Link DIR-817LW
 // @version      0.1
 // @match        *://*/*
 // @Author       Orlys
