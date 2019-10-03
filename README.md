@@ -1,3 +1,3 @@
 ## TipsScript
 
-Collects all of the JavaScript script for Tampermonkey
+Collects all of the script for use
