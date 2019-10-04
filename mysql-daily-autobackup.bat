@@ -1,5 +1,5 @@
 :: --------------------------------------------
-:: 	     Changes back info here
+:: 	     Changes backup info here
 :: --------------------------------------------
 
 set MYSQL_FOLDER="D:\xampp\mysql\bin"
