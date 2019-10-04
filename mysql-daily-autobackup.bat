@@ -19,7 +19,7 @@ set BACKUP_TASK_SCHEDULE_NAME="MySQL\Backup"
 
 cd %~dp0
 schtasks /query > tmp
-findstr /B /I %BACKUP_TASK_SCHEDULE_NAME% doh
+findstr /B /I %BACKUP_TASK_SCHEDULE_NAME% tmp
 
 if %errorlevel%==1 goto :delete
 goto :create
