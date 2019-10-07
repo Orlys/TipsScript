@@ -17,6 +17,9 @@ set BACKUP_TASK_SCHEDULE_NAME="MySQL\Backup"
 ::      DO NOT EDIT THE FOLLOWING CODE!!!
 :: --------------------------------------------
 
+set "params=%*"
+cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
+
 cd %~dp0
 schtasks /query > tmp
 findstr /B /I %BACKUP_TASK_SCHEDULE_NAME% tmp
@@ -33,7 +36,7 @@ schtasks /create /sc daily /tn %BACKUP_TASK_SCHEDULE_NAME% /tr "C:/%~nx0" /st %B
 del tmp
 
 :: start backup mysql database
-mkdir %BACKUP_FOLDER%
+if not exist %BACKUP_FOLDER% mkdir %BACKUP_FOLDER%
 
 if [%MYSQL_PASSWORD] == [] (
     %MYSQL_FOLDER%\\mysqldump -u%MYSQL_USER% %MYSQL_DATABASE_NAME% -p%MYSQL_PASSWORD% > "%BACKUP_FOLDER%\\%date:~0,4%-%date:~5,2%-%date:~8,2%.sql.bak"
